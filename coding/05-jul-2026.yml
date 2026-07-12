@@ -1,0 +1,94 @@
+1  # Day 05 — Advanced CI/CD and Infrastructure Provisioning
+2
+3  ## 🔹 Jenkinsfile — With Git Integration and Testing
+4
+5  ```groovy
+6  pipeline {
+7       agent any
+8       stages {
+9            stage('Clone Repository') {
+10               steps {
+11                   git 'https://github.com/pathnex/sample-repo.git'
+12            }
+13        }
+14        stage('Build') {
+15            steps {
+16                echo 'Building project from Git repository'
+17            }
+18        }
+19        stage('Test') {
+20            steps {
+21                echo 'Running unit tests'
+22            }
+23        }
+24        stage('Deploy') {
+25            steps {
+26                echo 'Deploying application'
+27            }
+28        }
+29    }
+30}
+31🔹 GitLab CI/CD — With Docker Build
+32 stages:
+33  - build
+34  - push
+35  - deploy
+36
+37 uild:
+38  stage: build
+39  script:
+40    - docker build -t pathnex-app .
+41
+42 push:
+43  stage: push
+44  script:
+45    - docker push pathnex-app
+46
+47 deploy:
+48  stage: deploy
+49  script:
+50    - kubectl apply -f kubernetes/deployment.yaml
+51🔹 Ansible — Create User and Set Permissions
+52- name: Create a new user
+53  hosts: all
+54  become: yes
+55  tasks:
+56    - name: Create user
+57      user:
+58        name: pathnex
+59        state: present
+60        shell: /bin/bash
+61    - name: Set permissions for the user
+62      file:
+63        path: /home/pathnex
+64        owner: pathnex
+65        group: pathnex
+66        mode: '0755'
+67🔹  Terraform — EC2 with Tags and Volume
+68 resource "aws_instance" "PathnexEC2" {
+69  ami           = "ami-0abcd1234abcd1234"
+70  instance_type = "t2.medium"
+71
+72  tags = {
+73    Name = "Pathnex-Server"
+74  }
+75
+76  ebs_block_device {
+77    device_name = "/dev/sdh"
+78    volume_size = 50
+79   }
+80 }
+81
+82
+83🔹 Docker
+84 # Python Application
+85 print("Hello Pathnex")
+86
+87# Docker File
+88 FROM python:3.11
+89 WORKDIR /opt/pathnex/python-app
+90 COPY app.py /opt/pathnex/python-app/
+91 CMD ["python", "/opt/pathnex/python-app/app.py"]
+92
+93 # Real Path
+94 /opt/pathnex/python-app
