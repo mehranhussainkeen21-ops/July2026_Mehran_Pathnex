@@ -1,0 +1,9 @@
+s.no         task                                    time  
+1            morning class                           3hour
+2            coding practice                         1hour
+3            revise lecture                          1.5 hour
+4            prepare for evening class               2 hour
+5            english speaking                        30 minutes
+6            introduction vedio                      15 minutes
+
+
