@@ -1,0 +1,9 @@
+s.no                            task                         time
+1                               morning class                2 hours
+2                               git practice                 2 hours
+3                               revision                     2 hours
+4                               coding practice              1 hour
+5                               english speaking             30 minutes
+6                               evening class                1 hour
+7                               revise how to push git       2 hour
+
